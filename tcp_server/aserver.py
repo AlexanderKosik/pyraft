@@ -14,7 +14,6 @@ async def heartbeat(reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
 
 async def new_server(address: str, port: int):
     server =  await asyncio.start_server(heartbeat, address, port)
-    #server.sockets[0].
     ip, port = server.sockets[0].getsockname()
     print(f'Listening on {ip}:{port}. Hit Ctrl+C to stop')
     await server.serve_forever()
